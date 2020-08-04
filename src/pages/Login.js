@@ -7,8 +7,8 @@ import BsAlertError from '../components/BsAlertError'
 
 export class Login extends Component {
   state = {
-    email: '',
-    password: '',
+    email: 'login@gmail.com',
+    password: 'abc123',
     loginError: null,
     isSubmitting: false
   };
@@ -24,8 +24,8 @@ export class Login extends Component {
     fire
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(user => {
-        localStorage.setItem('user', user)
+      .then(res => {
+        localStorage.setItem('user', res.user.email);
         this.props.history.push(ROUTES.HOME);
       })
       .catch(e => {
@@ -48,7 +48,6 @@ export class Login extends Component {
 
   onLoginFailed = (error) => {
     let loginError = '';
-    console.log(error);
     if (
       error.code === ERROR_CODE.AUTH_USER_NOT_FOUND || 
       error.code === ERROR_CODE.AUTH_WRONG_PASSWORD
@@ -77,6 +76,7 @@ export class Login extends Component {
                 name="email"
                 className="form-control"
                 id="email"
+                value={this.state.email}
                 onChange={this.onEmailChange}
               />
             </div>
@@ -87,6 +87,7 @@ export class Login extends Component {
                 name="password"
                 className="form-control"
                 id="password"
+                value={this.state.password}
                 onChange={this.onPassowrdChange}
               />
             </div>
