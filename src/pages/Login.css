@@ -1,0 +1,26 @@
+
+.login-container {
+  position: relative;
+  background-color: #00a6b6;
+  height: 100%;
+  width: 100%;
+}
+
+.login-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 25px 25px 50px;
+  min-width: 400px;
+  border-radius: 4px;
+}
+
+.login-wrapper h2 {
+  text-align: center;
+}
+
+.alert-danger {
+  text-align: center;
+}
